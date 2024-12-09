@@ -1,0 +1,338 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+/* Header */
+header {
+    background-color: #008000; /* Green */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2em;
+    border-bottom: 5px solid #ffffff;
+}
+
+.header-content {
+    flex: 1;
+}
+
+.flag-container {
+    flex: 0;
+}
+
+.flag {
+    width: 80px;
+    height: auto;
+    border: 1px solid white;
+}
+
+/* Main Content */
+.search-container {
+    text-align: center;
+    margin: 1em 0;
+}
+
+.search-container input {
+    width: 80%;
+    padding: 0.5em;
+    font-size: 1em;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.table-container {
+    margin: 0 auto;
+    width: 90%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+    background: #2e2e2e; /* Dark grey for table background */
+    color: white;
+}
+
+th, td {
+    border: 1px solid #444;
+    padding: 0.75em;
+    text-align: left;
+}
+
+th {
+    background-color: #008000; /* Green */
+    color: white;
+    text-transform: uppercase;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #383838; /* Slightly lighter grey for alternating rows */
+}
+
+tbody tr:hover {
+    background-color: #ff4d4d; /* Softer red hover effect */
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+/* Contact Info Section */
+.contact-info {
+    background-color: #2e2e2e; /* Dark grey */
+    color: white;
+    padding: 2em;
+    border-radius: 10px;
+    width: 80%;
+    margin: 2em auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.contact-info h2 {
+    color: #ffcc00; /* Yellow for emphasis */
+    margin-bottom: 1em;
+}
+
+.contact-info p {
+    font-size: 1.2em;
+    margin-bottom: 2em;
+}
+
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    font-size: 1.2em;
+    text-align: left;
+}
+
+.contact-item a {
+    color: #ffcc00; /* Yellow link */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-item a:hover {
+    color: #ffffff; /* White on hover */
+}
+
+.contact-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    padding: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Contact Button */
+.contact-button-container button {
+    padding: 10px 20px;
+    background-color: #008000; /* Green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.contact-button-container button:hover {
+    background-color: #006600; /* Darker green on hover */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1em 0;
+    background-color: #444444; /* Dark grey */
+    color: white;
+    border-top: 5px solid #ffffff;
+}
+button {
+    padding: 5px 10px;
+    background-color: #008000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #006600;
+}
+
+/* Center the Form Container */
+.form-container {
+    background-color: #ffffff; /* White background for contrast */
+    padding: 2em;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin: 5% auto; /* Center the form with margin */
+}
+
+/* Form Header */
+.form-container h2 {
+    color: #008000; /* Green heading for consistency */
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+/* Input Fields */
+.form-container form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-container form input:focus {
+    border-color: #008000;
+    outline: none;
+    box-shadow: 0 0 5px #008000;
+}
+
+/* Submit Button */
+.form-container form button {
+    background-color: #008000; /* Green button */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.form-container form button:hover {
+    background-color: #006600; /* Darker green */
+    transform: translateY(-2px);
+}
+
+.form-container form button:active {
+    background-color: #004d00; /* Even darker green */
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .form-container {
+        width: 90%;
+        padding: 1.5em;
+    }
+
+    .form-container h2 {
+        font-size: 1.2em;
+    }
+
+    .form-container form input {
+        font-size: 0.9em;
+    }
+
+    .form-container form button {
+        font-size: 0.9em;
+        padding: 8px 15px;
+    }
+}
+/* Wrapper specifically for this page */
+.add-data-wrapper {
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    min-height: 100vh; /* Full viewport height */
+    background-color: #2e2e2e; /* Dark grey background for the page */
+}
+
+/* Form Container */
+.form-container {
+    background-color: #383838; /* Slightly lighter grey for form */
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Heading inside the form */
+.form-container h2 {
+    color: #008000; /* Green heading */
+    margin-bottom: 1em;
+}
+
+/* Form inputs */
+.form-container form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #2e2e2e; /* Match the page background */
+    color: white;
+}
+
+.form-container form input::placeholder {
+    color: #ccc; /* Placeholder color */
+}
+
+.form-container form input:focus {
+    border-color: #008000;
+    outline: none;
+    box-shadow: 0 0 5px #008000;
+}
+
+/* Submit button */
+.form-container form button {
+    background-color: #008000; /* Green button */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.form-container form button:hover {
+    background-color: #006600; /* Darker green */
+    transform: translateY(-2px);
+}
+
+.form-container form button:active {
+    background-color: #004d00; /* Even darker green */
+    transform: translateY(0);
+}
+.home-button {
+    margin-top: 1em;
+    padding: 10px 20px;
+    background-color: #008000; /* Green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.home-button:hover {
+    background-color: #006600; /* Darker green on hover */
+}

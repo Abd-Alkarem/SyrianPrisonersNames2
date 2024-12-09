@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اسماء المعتقلين</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>اسماء المعتقلين</h1>
+        </div>
+        <div class="flag-container">
+            <img src="flag.png" alt="Flag" class="flag">
+        </div>
+    </header>
+
+    <main>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Enter a name..." onkeyup="searchTable()">
+        </div>
+
+        <!-- Button to Redirect to Contact Page -->
+        <div class="contact-button-container" style="text-align: center; margin: 1em;">
+            <!-- Contact Me Button -->
+            <a href="contact.html" style="text-decoration: none;">
+                <button style="padding: 10px 20px; background-color: #008000; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 1em;">
+                    للتواصل
+                </button>
+            </a>
+        
+            <!-- Add New Data Button -->
+            <a href="add_data.html" style="text-decoration: none; margin-left: 10px;">
+                <button style="padding: 10px 20px; background-color: #0056b3; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 1em;">
+                    إضافة بيانات جديدة
+                </button>
+            </a>
+        </div>
+        
+
+        <div class="table-container">
+            <table id="family-table">
+                <thead>
+                    <tr>
+                        <th>تاريخ الميلاد</th>
+                        <th>الاسم الثلاثي</th>
+                        <th>إسم الأم</th>
+                        <th>#</th>
+                        <th>رقم التواصل</th> <!-- Add this -->
+                    </tr>
+                </thead>
+                
+                <tbody id="table-body">
+                    <!-- Data will be populated dynamically -->
+                </tbody>
+            </table>
+        </div>
+
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2024  البحث عن اسماء المعتقلين في سوريا </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة بيانات</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="add-data-wrapper">
+        <div class="form-container">
+            <h2>إضافة بيانات جديدة</h2>
+            <form id="add-data-form">
+                <input type="text" id="name" placeholder="الاسم الثلاثي" required>
+                <input type="text" id="motherName" placeholder="إسم الأم" required>
+                <input type="date" id="dob" required>
+                <input type="text" id="contact" placeholder="رقم الهاتف" required>
+                <button type="submit">إضافة</button>
+            </form>
+            <button id="go-home" class="home-button">العودة إلى الصفحة الرئيسية</button>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table id="family-table">
+            <thead>
+                <tr>
+                    <th>تاريخ الميلاد</th>
+                    <th>الاسم الثلاثي</th>
+                    <th>إسم الأم</th>
+                    <th>#</th>
+                    <th>رقم التواصل</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <!-- Data will be populated dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Fetch and display data from the GitHub-hosted CSV file
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch("https://raw.githubusercontent.com/Abd-Alkarem/SyrianPrisonersNames2/main/DataBase.csv")
+                .then((response) => response.text())
+                .then((data) => {
+                    populateTable(data);
+                })
+                .catch((error) => console.error("Error loading CSV:", error));
+        });
+        // Populate table with data from the CSV
+        function populateTable(csvData) {
+            const rows = csvData.split("\n").filter((row) => row.trim() !== ""); // Remove empty rows
+            const tableBody = document.getElementById("table-body");
+
+            tableBody.innerHTML = ""; // Clear existing table content
+
+            rows.forEach((row, index) => {
+                if (index === 0) return; // Skip the header row
+                const cols = row.split(",");
+
+                if (cols.length < 5) {
+                    console.warn(`Row ${index} skipped (not enough columns):`, row);
+                    return;
+                }
+
+                const tr = document.createElement("tr");
+                const orderedCols = [cols[0], cols[2], cols[1], cols[3], cols[4]];
+
+                orderedCols.forEach((col, colIndex) => {
+                    const td = document.createElement("td");
+
+                    if (colIndex === 4) { // For the Contact column
+                        const whatsappLink = document.createElement("a");
+                        whatsappLink.href = `https://wa.me/${col.trim()}`;
+                        whatsappLink.target = "_blank";
+                        whatsappLink.textContent = col.trim();
+                        whatsappLink.style.textDecoration = "none";
+                        whatsappLink.style.color = "green";
+                        td.appendChild(whatsappLink);
+                    } else {
+                        td.textContent = col.trim();
+                    }
+
+                    tr.appendChild(td);
+                });
+
+                tableBody.appendChild(tr);
+            });
+        }
+
+        // Handle form submission for adding data
+        document.getElementById("add-data-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+            const motherName = document.getElementById("motherName").value.trim();
+            const dob = document.getElementById("dob").value.trim();
+            const contact = document.getElementById("contact").value.trim();
+
+            if (!name || !motherName || !dob || !contact) {
+                alert("يرجى ملء جميع الحقول");
+                return;
+            }
+
+            const newRow = { name, motherName, dob, contact };
+
+            fetch("https://syrianprisonersnames.onrender.com/saveData.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(newRow),
+            })
+                .then((response) => {
+                    if (response.ok) return response.json();
+                    throw new Error("Failed to save data");
+                })
+                .then((data) => {
+                    if (data.status === "success") {
+                        alert("تمت إضافة البيانات بنجاح!");
+                        window.location.href = "index.html";
+                    } else {
+                        alert(`خطأ: ${data.message}`);
+                    }
+                })
+                .catch((error) => console.error("Error saving data:", error));
+        });
+
+        // Handle "Go Home" button click
+        document.getElementById("go-home").addEventListener("click", () => {
+            window.location.href = "index.html";
+        });
+    </script>
+</body>
+</html>
